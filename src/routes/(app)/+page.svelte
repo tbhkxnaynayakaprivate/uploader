@@ -27,6 +27,9 @@
     let tosDialog;
 
     /** @type {HTMLDialogElement} */
+    let psaDialog;
+
+    /** @type {HTMLDialogElement} */
     let errorDialog;
 
     /** @type {EventTarget} */
@@ -221,6 +224,39 @@
     </section>
 </Dialog>
 
+<Dialog bind:node={psaDialog}>
+    <section style="max-width: 600px;">
+        <h3>Public Service Announcement</h3>
+        <p>
+            <i>Roskomnadzor</i> has banned this website as of Oct 17, 2024, citing
+            the presence of "prohibited information on ways, methods of providing
+            access to information resources and (or) information and telecommunication
+            networks, access to which is restricted on the territory of the Russian
+            Federation."
+        </p>
+        <p>
+            To continue accessing the site, ensure your browser is up-to-date
+            with
+            <a target="_blank" href="https://tls-ech.dev/"> ECH support </a>
+            and use a secure DNS provider. This includes enabling
+            <a target="_blank" href="https://kappa.lol/IZu4w/secure_dns.png">
+                Secure DNS
+            </a>
+            in Chrome-based browsers or
+            <a target="_blank" href="https://kappa.lol/dkGZQ/DoH.png">
+                DNS over HTTPS
+            </a>
+            in Firefox. No additional circumvention methods should be necessary.
+        </p>
+        <p>
+            We refuse to comply to
+            <a href="https://kappa.lol/0QrWB/eais_3077105.pdf" target="_blank">
+                their request</a
+            >.
+        </p>
+    </section>
+</Dialog>
+
 <section>
     <p>
         <a
@@ -231,6 +267,17 @@
             }}>Terms and Privacy Policy</a
         >
     </p>
+
+    <p class="scary-psa">
+        <a
+            href="/"
+            on:click={(e) => {
+                e.preventDefault();
+                psaDialog.showModal();
+            }}>Russia bans i.supa.codes</a
+        >
+    </p>
+
     <p>
         Max file size: 100 MB<br />Drag or paste files anywhere on this page to
         start uploading
@@ -321,5 +368,13 @@
 
     .terms {
         font-size: 0.9rem;
+    }
+
+    .scary-psa {
+        font-weight: bold;
+        a {
+            text-decoration: underline;
+            color: rgb(255, 120, 120);
+        }
     }
 </style>
